@@ -106,3 +106,14 @@ Backend 94 passed, frontend 31 passed. Pages: [testing](testing.md).
 Planning on Opus 5.5 and execution on Sonnet 5.5 (`opusplan`), a `feature/*` branch per feature, and a Stop hook
 that logs each turn to an Obsidian vault (checked by hand: log entry and wiki mirror written). Catalog PRD gaps
 recorded; catalog is English only. Pages: [decisions](decisions.md).
+
+## [2026-11-26] infra | Railway deployment files
+On `feature/railway-deploy`: `backend/railway.json` (Railpack, uvicorn on `$PORT`, `/health`), `backend/.python-version`,
+`frontend/server.mjs` + `server-lib.mjs` (dependency-free static server that writes `js/config.js` from
+`API_URL`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`), `frontend/railway.json`, `docs/deploy-railway.md`.
+Commits 1f62e12, 483cb85, af4f467. Frontend 39 passed; backend 23 passed, 63 skipped (no `.env`) with
+`test_consultant.py` excluded (collection error without `.env`). Not deployed. Pages: [open-items](open-items.md).
+
+## [2026-11-26] security | Review of the workflow and Railway commits
+`security-review` over `feature/railway-deploy` vs `origin/main`: no findings at confidence 8 or above
+(path traversal guard, exposed files, config generation, hook subprocess use checked).

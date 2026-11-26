@@ -29,7 +29,8 @@ Studio branding, project dossier and export, 3D renderings: designs are in
 - Turn email confirmation on and configure SMTP. While it is off, someone can register with another person's address and it is shown to the designer as the client's email.
 - Rate limiting on the API.
 - `connect-src` in the content security policy, per environment.
-- Railway deployment files and environments.
+- Railway: deployment files exist on `feature/railway-deploy` ([`docs/deploy-railway.md`](../docs/deploy-railway.md)), but neither environment is created yet, the Railpack builds are unverified on Railway, and `node server.mjs` has not been run live. Needs the Railway CLI (blocked npm install script) and the user's login.
+- `backend/tests/test_consultant.py` imports `app.main` at module level, so without `backend/.env` the whole backend suite stops at collection instead of skipping.
 - Sign-out does not invalidate an already issued token before it expires.
 
 ## Smaller
