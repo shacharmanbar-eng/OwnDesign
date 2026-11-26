@@ -49,6 +49,10 @@ Integration and E2E tests run against the project in `backend/.env`, create thro
 (`*@owndesign-test.example.com`) and delete them afterwards. They are skipped when `.env` is missing.
 First E2E run needs `uv run playwright install chromium`.
 
+## Deploy
+
+Railway (Production and Dev, backend and frontend services): see [`docs/deploy-railway.md`](docs/deploy-railway.md).
+
 ## Database and auth settings
 
 ```sh
