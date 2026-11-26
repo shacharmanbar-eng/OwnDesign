@@ -22,23 +22,28 @@ Talk to the user in Hebrew. Code, UI text, docs and commit messages are in Engli
    - **Edge cases:** new tests for the change's boundaries: empty, minimum and maximum values, invalid
      and malformed input, wrong role or wrong studio, repeated and concurrent requests.
    Report the real results. A failing or skipped test is reported as such, never hidden.
-6. **Commit whenever a piece of code writing is finished.** Small commits on `dev`, format
+6. **Commit whenever a piece of code writing is finished.** Small commits on the feature's branch, format
    `<type>: <description>` (feat, fix, refactor, docs, test, chore, perf, ci). No attribution lines.
 7. **Security review at every stage.** Run the `security-review` skill after each implementation
    step, once its commits exist locally and before anything is pushed: the skill reviews the
    branch's commits against `origin/main`, so it does not see uncommitted work. Review the plan
    itself when it touches auth, tenant isolation, secrets or user data. Fix critical and high
    findings before pushing; record the rest in `wiki/open-items.md`.
-8. **Update the wiki** (rules below), commit it, and push `dev` to GitHub. The task is not done until
-   the wiki is pushed.
+8. **Update the wiki** (rules below), commit it, and push the branch to GitHub. The task is not done
+   until the wiki is pushed.
 
-## Model
+## Models
 
-Everything runs on **Fable 5.2** (`claude-fable-5-2`).
+- **Planning: Opus 5.5** (`claude-opus-5-5`). **Execution: Sonnet 5.5** (`claude-sonnet-5-5`).
+- Main session: `.claude/settings.json` sets `opusplan` (Opus in plan mode, Sonnet when executing).
+- Subagents: always pass `model: "sonnet"` when spawning, even when the agent's own definition names
+  another model. A planning subagent (`Plan`) gets `model: "opus"`.
 
-- Main session: pinned in `.claude/settings.json`.
-- Subagents: always pass `model: "fable"` when spawning, even when the agent's own definition names
-  another model.
+## Branches
+
+- `main` and `dev` live on GitHub. Every feature gets its own branch `feature/<name>` cut from `dev`,
+  and is merged back into `dev` when its tests and security review pass.
+- Nothing reaches `main` without the user's explicit instruction.
 
 ## Subagents
 
@@ -103,6 +108,6 @@ details.
   print or paste them.
 - All writes go through the backend with the service key after validation; signed-in users have
   SELECT only. Every new table gets RLS and a tenant-isolation test (`wiki/architecture.md`).
-- Work on `dev`. `main` moves only when the user asks.
+- Work on a `feature/*` branch from `dev`. `main` moves only when the user asks.
 - Destructive or irreversible actions (deleting data, force-push, changing production settings) need
   the user's explicit approval each time.

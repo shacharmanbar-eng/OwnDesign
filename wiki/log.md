@@ -101,3 +101,8 @@ Several findings fixed (suspended studios, upload race, consultant cap and conte
 ## [2026-11-23] test | Phase 2 verified
 Backend 94 passed, frontend 31 passed. Pages: [testing](testing.md).
 
+
+## [2026-11-26] decision | Workflow update: models, feature branches, Obsidian log
+Planning on Opus 5.5 and execution on Sonnet 5.5 (`opusplan`), a `feature/*` branch per feature, and a Stop hook
+that logs each turn to an Obsidian vault (checked by hand: log entry and wiki mirror written). Catalog PRD gaps
+recorded; catalog is English only. Pages: [decisions](decisions.md).

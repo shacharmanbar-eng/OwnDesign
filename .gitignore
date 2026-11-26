@@ -7,3 +7,4 @@ supabase/.temp/
 supabase/.branches/
 frontend/js/config.js
 test-results/
+.claude/settings.local.json

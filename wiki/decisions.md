@@ -11,7 +11,12 @@ Each line: the decision, who made it, why. Dates are in [log.md](log.md).
 - **UI follows the Stitch project** "AI Interior Design Platform" ([design.md](design.md)).
 - **GitHub repository is public.** The user chose to publish with the existing commit author address.
 - **Stitch screens for later phases stay as references** in `design/stitch/`; the two that match Phase 1 (client portal, studio dashboard) are built with real data only.
-- **Working rules** in `CLAUDE.md`: plan first, Fable 5.2, three kinds of tests, security review at every stage, commit per finished piece of code, subagents for specialist work, memory in `wiki/`.
+- **Working rules** in `CLAUDE.md`: plan first, three kinds of tests, security review at every stage, commit per finished piece of code, subagents for specialist work, memory in `wiki/`.
+- **Models (2026-11-26):** plan with Opus 5.5, execute with Sonnet 5.5 (`opusplan`; subagents on Sonnet). Replaces "everything on Fable 5.2".
+- **Feature branches (2026-11-26):** each feature on `feature/<name>` from `dev`; `main` only on the user's explicit instruction.
+- **Obsidian log (2026-11-26):** a Stop hook (`.claude/hooks/obsidian_log.py`) writes a per-turn entry and a wiki mirror into a local Obsidian vault. The vault path stays in the git-ignored `.claude/settings.local.json`.
+- **Product catalog (2026-11-26):** built from the catalog PRD in English only (the PRD's Hebrew/RTL is not built). Supabase moves to a new project of the user's own.
+- **Railway (2026-11-26):** two environments, Production and Dev, each with a frontend and a backend service.
 
 ## By Claude (open to change)
 
